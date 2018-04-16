@@ -3763,3 +3763,6 @@ zstyle ':vcs_info:git*' actionformats "%F{green}[%b%F{yellow}|%F{red}%a]%F{no_co
 zstyle ':vcs_info:git*' formats "%F{green}[%b]%F{no_color}%} " "zsh: %r"
 
 unsetopt correct_all
+
+export CLICOLOR=1
+export LSCOLORS=gxFxCxDxBxegedabagacad
