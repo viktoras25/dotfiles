@@ -3759,10 +3759,11 @@ zrclocal
 zstyle ':prompt:grml:right:setup' items rc
 zstyle ':prompt:grml:left:setup' items user at host path vcs percent
 
-zstyle ':vcs_info:git*' actionformats "%F{green}[%b%F{yellow}|%F{red}%a]%F{no_color} " "zsh: %r"
-zstyle ':vcs_info:git*' formats "%F{green}[%b]%F{no_color}%} " "zsh: %r"
+zstyle ':vcs_info:git*' actionformats "%F{green}[%b%F{yellow}|%F{red}%a]%f " "zsh: %r"
+zstyle ':vcs_info:git*' formats "%F{green}[%b]%f " "zsh: %r"
 
 unsetopt correct_all
 
 export CLICOLOR=1
 export LSCOLORS=gxFxCxDxBxegedabagacad
+export LS_COLORS='di=36:ln=1;35:so=1;32:pi=1;33:ex=1;31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
