@@ -1,0 +1,48 @@
+[user]
+    name = Viktoras Bezaras
+    email = mail@viktoras.de
+
+[color]
+    ui = true
+
+[push]
+    default = simple
+
+[help]
+    autocorrect = 1 
+
+[core]
+    autocrlf = false
+
+    # Make `git rebase` safer on macOS
+    # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+    trustctime = false
+
+    # Prevent showing files whose names contain non-ASCII symbols as unversioned.
+    # http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
+    precomposeunicode = false
+
+    # Speed up commands involving untracked files such as `git status`.
+    # https://git-scm.com/docs/git-update-index#_untracked_cache
+    untrackedCache = true
+
+[alias]
+    unstage = reset HEAD --
+
+    # Switch to a last updated branch with search term in the last: e.g. git jira 20 -> git checkout bugfix-pr-20
+    jira = !sh -c \"git for-each-ref --format='%(refname:short)' --sort=-committerdate refs/heads | grep -m 1 '$1\\$' | xargs -n1 -r git checkout\"
+
+    # Find branch by name
+    find = !sh -c \"git branch | grep $1\"
+    branch-stat = !sh -c \"git log --stat --pretty=oneline $1..HEAD\"
+
+    # View abbreviated SHA, description, and history graph of the latest 10 commits
+    last10 = log --pretty=oneline -n 10 --graph --abbrev-commit
+
+    # Show verbose output about tags, branches or remotes
+    tags = tag -l
+    branches = branch -v
+    remotes = remote -v
+    
+    # List aliases
+    aliases = config --get-regexp alias
