@@ -8,3 +8,4 @@ if [ $(echo $0) = "bash" ]; then
   PS1="\e[0;94m\u\e[0m@\h \e[1m\w\e[0m % "
 fi
 
+HOMEBREW_NO_AUTO_UPDATE=1
