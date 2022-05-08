@@ -1,6 +1,7 @@
 [user]
     name = Viktoras Bezaras
-    email = mail@viktoras.de
+    email = viktoras.bezaras@gmail.com
+    signingkey = 7DFF92A387918961
 
 [color]
     ui = true
@@ -10,6 +11,9 @@
 
 [help]
     autocorrect = 1 
+
+[commit]
+    gpgsign = true
 
 [core]
     autocrlf = false

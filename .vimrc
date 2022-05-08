@@ -20,4 +20,3 @@ syntax on
 colorscheme monokai
 
 Plugin 'tpope/vim-sensible'
-Plugin 'fatih/vim-go'
