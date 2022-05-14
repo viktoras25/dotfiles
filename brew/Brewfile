@@ -1,0 +1,21 @@
+brew "zsh"
+brew "vim"
+brew "git"
+brew "gnupg"
+brew "wget"
+brew "pinentry-mac"
+brew "tmux"
+
+cask_args appdir: "~/Applications", require_sha: true
+
+cask "alfred"
+cask "appcleaner"
+cask "docker"
+cask "flux"
+cask "insomnia"
+cask "marta"
+cask "sequel-ace"
+cask "iterm2"
+cask "coconutBattery"
+cask "sublime-text"
+cask "vlc"
