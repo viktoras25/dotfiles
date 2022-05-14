@@ -30,6 +30,10 @@
     # https://git-scm.com/docs/git-update-index#_untracked_cache
     untrackedCache = true
 
+[oh-my-zsh]
+    hide-status = 1
+    hide-dirty = 1
+
 [url "git@github.com:"]
     insteadOf = https://github.com/
 
