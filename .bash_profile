@@ -2,6 +2,8 @@
 [ -d "/usr/local/bin" ] && export PATH="/usr/local/bin:$PATH"
 [ -d "$HOME/bin" ] && export PATH="$HOME/bin:$PATH";
 
+[ -f .alias ] && source .alias
+
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 

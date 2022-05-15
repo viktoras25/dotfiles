@@ -1,0 +1,13 @@
+behavior {
+    theme "Kon"
+}
+
+keyBindings {
+    "Space" {id "core.select.move.down"}
+    "F2" { id "core.rename" }
+    "F3" { id "core.preview" }
+}
+
+table {
+    selectGoUpDirectoryOnEnter true
+}
