@@ -38,14 +38,23 @@ which -s brew || source ./brew/install-brew.sh;
 echo "Install basic set of utils"
 brew bundle --file ./brew/Brewfile --no-lock;
 
-copyFile '.alias'
-copyFile '.bash_profile'
-copyFile '.bashrc'
-copyFile '.gitconfig'
-copyFile '.tmux.conf'
-copyFile '.vimrc'
-copyFile '.zshrc'
-touch ~/.zshrc.local
+copyFile '.alias';
+copyFile '.bash_profile';
+copyFile '.bashrc';
+copyFile '.gitconfig';
+copyFile '.tmux.conf';
+copyFile '.vimrc';
+copyFile '.zshrc';
+
+# Only initially
+if [ ! -f ~/.zshenv ]; then
+  copyFile '.zshenv';
+fi
+
+# Git configuration
+[ "$EMAIL" ] && git config --global user.email "$EMAIL"
+[ "$GPG_KEY" ] && git config --global user.signingkey "$GPG_KEY"
+git config --global gpg.program "$(which gpg)"
 
 # Install vim plugins
 vim +PluginInstall +qall

@@ -2,29 +2,10 @@
 
 command -v md5sum > /dev/null || alias md5sum="md5"
 command -v sha1sum > /dev/null || alias sha1sum="shasum"
+command -v pbcopy > /dev/null || alias pbcopy="xclip -selection clipboard"
+command -v pbpaste > /dev/null || alias pbpaste="xclip -selection clipboard"
 
 # Disable Spotlight
 alias spotoff="sudo mdutil -a -i off"
 # Enable Spotlight
 alias spoton="sudo mdutil -a -i on"
-
-
-# Linux specific aliases, work on both MacOS and Linux.
-pbcopy() {
-	stdin=$(</dev/stdin);
-	pbcopy="$(which pbcopy)";
-	if [[ -n "$pbcopy" ]]; then
-		echo "$stdin" | "$pbcopy"
-	else
-		echo "$stdin" | xclip -selection clipboard
-	fi
-}
-
-pbpaste() {
-	pbpaste="$(which pbpaste)";
-	if [[ -n "$pbpaste" ]]; then
-		"$pbpaste"
-	else
-		xclip -selection clipboard
-	fi
-}

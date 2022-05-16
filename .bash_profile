@@ -1,8 +1,10 @@
 [ -d "/usr/local/sbin" ] && export PATH="/usr/local/sbin:$PATH"
 [ -d "/usr/local/bin" ] && export PATH="/usr/local/bin:$PATH"
+[ -d "/opt/homebrew/bin" ] && export PATH="/opt/homebrew/bin:$PATH"
 [ -d "$HOME/bin" ] && export PATH="$HOME/bin:$PATH";
 
 [ -f .alias ] && source .alias
+[ -f .zshenv ] && source ~/.zshenv
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
@@ -22,7 +24,3 @@ export HOMEBREW_CASK_OPTS="--require-sha --appdir=~/Applications"
 if [ $(echo $0) = "bash" ]; then
   PS1="\e[0;94m\u\e[0m@\h \e[1m\w\e[0m % "
 fi
-
-# Git user configuration
-git config --global user.email "{$EMAIL:-viktoras.bezaras@gmail.com}"
-git config --global user.signingkey "{$GPG_KEY:-7DFF92A387918961)"
