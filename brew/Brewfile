@@ -5,6 +5,7 @@ brew "gnupg"
 brew "wget"
 brew "pinentry-mac"
 brew "tmux"
+brew "lftp"
 
 cask_args appdir: "~/Applications", require_sha: true
 
