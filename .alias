@@ -9,3 +9,6 @@ command -v pbpaste > /dev/null || alias pbpaste="xclip -selection clipboard"
 alias spotoff="sudo mdutil -a -i off"
 # Enable Spotlight
 alias spoton="sudo mdutil -a -i on"
+
+# Laravel Sail
+alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
