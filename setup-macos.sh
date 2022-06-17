@@ -24,8 +24,18 @@ defaults write NSGlobalDomain AppleMetricUnits -bool true
 # Set the timezone; see `sudo systemsetup -listtimezones` for other values
 sudo systemsetup -settimezone "Europe/Berlin" > /dev/null
 
-# Do not show recent apps
+# Dock settings
 defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock tilesize 60
 defaults write com.apple.dock size-immutable -bool true
 defaults write com.apple.dock show-recents -bool false
+defaults write com.apple.dock minimize-to-application -bool true
+
+# Disable hot corners
+defaults write com.apple.dock wvous-tr-corner -int 0
+defaults write com.apple.dock wvous-tl-corner -int 0
+defaults write com.apple.dock wvous-bl-corner -int 0
+defaults write com.apple.dock wvous-br-corner -int 0
+
+# Disable fn language switching
+defaults write com.apple.HIToolbox AppleFnUsageType -int 0
