@@ -36,7 +36,7 @@ echo "Check if brew is installed"
 which -s brew || source ./brew/install-brew.sh;
 
 echo "Install basic set of utils"
-brew bundle --file ./brew/Brewfile --no-lock;
+brew bundle --file ./brew/Base.Brewfile --no-lock;
 
 copyFile '.alias';
 copyFile '.bash_profile';
