@@ -32,6 +32,9 @@ echo " "
 
 xcode-select --install || echo "xcode-select already installed"
 
+echo 'Install vim plugin bundle'
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
 echo "Check if brew is installed"
 which -s brew || source ./brew/install-brew.sh;
 

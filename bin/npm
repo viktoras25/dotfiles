@@ -1,0 +1,2 @@
+#!/bin/sh
+docker run --rm -it --workdir="/app" -v "$(pwd)":/app --entrypoint npm node:current-alpine "$@"
