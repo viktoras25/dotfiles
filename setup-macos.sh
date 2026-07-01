@@ -5,14 +5,12 @@
 
 sudo -v
 
-# Disable the sound effects on boot
-# sudo nvram StartupMute=%01 - alternative. 01 - disabled, 00 - enabled
-# This should reduce the volume
-sudo nvram SystemAudioVolume=" "
+# Disable the sound effects on boot (Apple Silicon)
+sudo nvram StartupMute=%01
 
 # Expand save panel by default
-defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool false
-defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool false
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 
 # Save to disk (not to iCloud) by default
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
@@ -21,12 +19,13 @@ defaults write NSGlobalDomain AppleLanguages -array "en-DE" "ru-DE" "de-DE"
 defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
 defaults write NSGlobalDomain AppleMetricUnits -bool true
 
-# Set the timezone; see `sudo systemsetup -listtimezones` for other values
-sudo systemsetup -settimezone "Europe/Berlin" > /dev/null
+# Set the timezone
+sudo systemsetup -settimezone "Europe/Berlin" > /dev/null 2>&1 || \
+  echo "systemsetup deprecated on this macOS version — set timezone manually in System Settings"
 
 # Dock settings
 defaults write com.apple.dock autohide -bool true
-defaults write com.apple.dock tilesize 60
+defaults write com.apple.dock tilesize -int 60
 defaults write com.apple.dock size-immutable -bool true
 defaults write com.apple.dock show-recents -bool false
 defaults write com.apple.dock minimize-to-application -bool true
@@ -47,12 +46,9 @@ defaults write com.apple.HIToolbox AppleFnUsageType -int 0
 # Finder: allow quitting via ⌘ + Q; doing so will also hide desktop icons
 defaults write com.apple.finder QuitMenuItem -bool true
 
-
-# Set Desktop as the default location for new Finder windows
-# For other paths, use `PfLo` and `file:///full/path/here/`
-defaults write com.apple.finder NewWindowTarget -string "PfDe"
-defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Desktop/"
-
+# Set Home as the default location for new Finder windows
+defaults write com.apple.finder NewWindowTarget -string "PfHm"
+defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
 
 # Show icons for hard drives, servers, and removable media on the desktop
 defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
@@ -77,12 +73,20 @@ sudo chflags hidden ~/Music
 sudo chflags hidden ~/Pictures
 sudo chflags hidden ~/Movies
 sudo chflags hidden ~/Public
-sudo chflags hidden ~/Sites
-sudo chflags hidden ~/Documents
 
 # Expand the following File Info panes:
-# “General”, “Open with”, and “Sharing & Permissions”
+# "General", "Open with", and "Sharing & Permissions"
 defaults write com.apple.finder FXInfoPanesExpanded -dict \
 	General -bool true \
 	OpenWith -bool true \
 	Privileges -bool true
+
+###############################################################################
+# Menu bar clock                                                               #
+###############################################################################
+
+defaults write com.apple.menuextra.clock Show24Hour -bool true
+defaults write com.apple.menuextra.clock ShowDayOfWeek -bool true
+defaults write com.apple.menuextra.clock ShowDate -bool false
+defaults write com.apple.menuextra.clock ShowSeconds -bool false
+defaults write com.apple.menuextra.clock IsAnalog -bool false
