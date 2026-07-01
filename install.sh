@@ -68,4 +68,30 @@ if [ ! "$ZSH" ]; then
   sh ./zsh/install-omz.sh --unattended --keep-zshrc;
 fi;
 
+function copyClaudeFile {
+  if [ ! -f "claude/$1" ]; then
+    echo "File does not exist: claude/$1";
+    return 1;
+  fi;
+
+  echo "Install claude/$1"
+  mkdir -p ~/.claude
+
+  if [ -f ~/.claude/"$1" ] && ! (cmp -s "claude/$1" ~/.claude/"$1"); then
+    cp ~/.claude/"$1" ~/.claude/"$1".backup;
+    echo "Created a backup: ~/.claude/$1.backup";
+  fi;
+
+  cp "claude/$1" ~/.claude/"$1";
+}
+
+copyClaudeFile 'settings.json';
+copyClaudeFile 'statusline-command.sh';
+chmod +x ~/.claude/statusline-command.sh;
+
+if [ ! -f ~/CLAUDE.md ]; then
+  cp claude/CLAUDE.md ~/CLAUDE.md;
+fi
+
 unset copyFile;
+unset copyClaudeFile;

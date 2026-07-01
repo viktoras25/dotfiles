@@ -8,19 +8,13 @@ brew "wget"
 brew "tmux"
 brew "lftp"
 brew "coreutils"
+brew "jq"
+brew "claude"
 
-# Will probably remove
-# brew "pinentry-mac"
-
-cask_args appdir: "~/Applications", require_sha: true
-
-cask "alfred"
-cask "coconutBattery"
+cask "raycast"
 cask "docker"
-cask "flux"
 cask "firefox"
 cask "thunderbird"
-cask "insomnia"
 cask "iterm2"
 cask "lulu"
 cask "marta"

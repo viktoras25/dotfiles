@@ -1,10 +1,11 @@
 [ -d "/usr/local/sbin" ] && export PATH="/usr/local/sbin:$PATH"
 [ -d "/usr/local/bin" ] && export PATH="/usr/local/bin:$PATH"
 [ -d "/opt/homebrew/bin" ] && export PATH="/opt/homebrew/bin:$PATH"
+[ -d "/opt/homebrew/sbin" ] && export PATH="/opt/homebrew/sbin:$PATH"
 [ -d "$HOME/bin" ] && export PATH="$HOME/bin:$PATH";
 
 [ -f .alias ] && source .alias
-[ -f .zshenv ] && source .zshenv
+[ -f .zshenv ] && source ~/.zshenv
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
@@ -18,12 +19,11 @@ export LS_COLORS='di=36:ln=1;35:so=1;32:pi=1;33:ex=1;31:bd=34;46:cd=34;43:su=30;
 export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_INSECURE_REDIRECT=1
-export HOMEBREW_CASK_OPTS="--require-sha --appdir=~/Applications"
+export HOMEBREW_CASK_OPTS="--require-sha"
 
 # Set prompt
 if [ $(echo $0) = "bash" ]; then
   PS1="\e[0;94m\u\e[0m@\h \e[1m\w\e[0m % "
 fi
 
-# SSH over GPG
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)

@@ -1,7 +1,7 @@
 [user]
     name = Viktoras Bezaras
     email = viktoras.bezaras@gmail.com
-    signingkey = 7DFF92A387918961
+    signingkey = 92E63027B442B7A9
 
 [color]
     ui = true
@@ -34,8 +34,8 @@
     hide-status = 1
     hide-dirty = 1
 
-#[url "git@github.com:"]
-#    insteadOf = https://github.com/
+[url "git@github.com:"]
+    insteadOf = https://github.com/
 
 [init]
     defaultBranch = master
@@ -60,3 +60,5 @@
     
     # List aliases
     aliases = config --get-regexp alias
+[gpg]
+	program = /opt/homebrew/bin/gpg
