@@ -4,7 +4,7 @@
 [ -d "/opt/homebrew/sbin" ] && export PATH="/opt/homebrew/sbin:$PATH"
 [ -d "$HOME/bin" ] && export PATH="$HOME/bin:$PATH";
 
-[ -f .alias ] && source .alias
+[ -f ~/.alias ] && source ~/.alias
 [ -f .zshenv ] && source ~/.zshenv
 
 export LC_ALL=en_US.UTF-8
@@ -22,8 +22,10 @@ export HOMEBREW_NO_INSECURE_REDIRECT=1
 export HOMEBREW_CASK_OPTS="--require-sha"
 
 # Set prompt
-if [ $(echo $0) = "bash" ]; then
+if [ "$0" = "bash" ]; then
   PS1="\e[0;94m\u\e[0m@\h \e[1m\w\e[0m % "
 fi
 
+export GPG_TTY=$(tty)
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+gpg-connect-agent updatestartuptty /bye >/dev/null 2>&1

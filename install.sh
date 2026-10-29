@@ -32,14 +32,22 @@ echo " "
 
 xcode-select --install || echo "xcode-select already installed"
 
-echo 'Install vim plugin bundle'
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+echo "Install vim plugin bundle"
+[ -d ~/.vim/bundle/Vundle.vim ] || git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 echo "Check if brew is installed"
 which -s brew || source ./brew/install-brew.sh;
 
 echo "Install basic set of utils"
 brew bundle --file ./brew/Base.Brewfile --no-lock;
+
+# Usage: ./install.sh [home|work]
+PROFILE="${1:-}"
+if [ -n "$PROFILE" ]; then
+  profile_file="./brew/$(echo "${PROFILE:0:1}" | tr a-z A-Z)${PROFILE:1}.Brewfile"
+  echo "Install $PROFILE apps"
+  brew bundle --file "$profile_file" --no-lock;
+fi
 
 copyFile '.alias';
 copyFile '.bash_profile';
@@ -88,10 +96,6 @@ function copyClaudeFile {
 copyClaudeFile 'settings.json';
 copyClaudeFile 'statusline-command.sh';
 chmod +x ~/.claude/statusline-command.sh;
-
-if [ ! -f ~/CLAUDE.md ]; then
-  cp claude/CLAUDE.md ~/CLAUDE.md;
-fi
 
 unset copyFile;
 unset copyClaudeFile;

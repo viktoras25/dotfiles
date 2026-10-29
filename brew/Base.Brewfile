@@ -1,16 +1,32 @@
+# CLI
 brew "zsh"
 brew "curl"
-brew "composer"
-brew "vim"
 brew "git"
+brew "gh"
 brew "gnupg"
+brew "pinentry-mac"
 brew "wget"
 brew "tmux"
+brew "vim"
+brew "jq"
 brew "lftp"
 brew "coreutils"
-brew "jq"
-brew "claude"
+brew "glow"
+brew "ffmpeg"
+brew "imagemagick"
 
+# Dev
+brew "node@24"
+brew "uv"
+brew "pipx"
+brew "composer"
+brew "awscli"
+
+# AI
+cask "claude"
+cask "claude-code@latest"
+
+# Apps
 cask "raycast"
 cask "docker"
 cask "firefox"
